@@ -3,6 +3,12 @@ set -e
 
 echo "=== GPU Utilization Controller 환경 설정 ==="
 
+# python3-venv 패키지 확인 및 설치
+if ! python3 -m venv --help > /dev/null 2>&1; then
+    echo ">> python3-venv 패키지 설치..."
+    sudo apt update && sudo apt install -y python3-venv
+fi
+
 # venv 생성
 if [ ! -d "venv" ]; then
     echo ">> Python venv 생성..."
