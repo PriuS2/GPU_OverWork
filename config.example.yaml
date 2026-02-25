@@ -1,0 +1,21 @@
+# GPU Utilization Controller 설정 파일
+# 이 파일을 config.yaml로 복사하여 사용하세요.
+
+schedule:
+  start_time: "18:00"       # 시작 시간 (HH:MM, 24시간)
+  end_time: "23:59"         # 종료 시간 (HH:MM, 24시간)
+
+target_utilization: 70       # 목표 GPU 사용률 (1-100%)
+
+gpus: "all"                  # "all" 또는 GPU 인덱스 목록 [0, 1]
+
+control:
+  interval_seconds: 2.0      # 제어 루프 주기 (초)
+  pid_kp: 0.005              # PID 비례 게인
+  pid_ki: 0.003              # PID 적분 게인
+  pid_kd: 0.001              # PID 미분 게인
+  matrix_size: 4096          # NxN 행렬 크기 (H100 권장: 4096)
+  cycle_period: 0.02         # duty-cycle 주기 (초)
+
+log_file: "gpu_controller.log"
+log_level: "INFO"            # DEBUG, INFO, WARNING, ERROR
